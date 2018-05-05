@@ -2,18 +2,14 @@
 
 $user = "root";
 $pass = "root";
-$host = "localhost:3308";
-$db   = "teste";
+$host = "localhost";
+$db   = "system_test";
 
 try {
 
-    //$connection = new PDO("mysql:host={$host};dbname={$db}", $user, $pass);
-    $conn = new PDO('mysql:host=localhost:3308;dbname=teste', 'root', 'root');
-    
-    
-    //var_dump($connection);
+    $connection = new PDO("mysql:host={$host};dbname={$db}", $user, $pass);
 
-    $users      = $conn->query('SELECT * from users');
+    $users      = $connection->query('SELECT * from users');
 
     $users->setFetchMode(PDO::FETCH_INTO, new stdClass);
 
